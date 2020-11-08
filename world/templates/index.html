@@ -2,9 +2,10 @@
 
 {% block content %}
 <div class="container">
-    <div style="text-align: center; margin-top: 1rem;">
+
     {% if user.is_authenticated %}
-    <p class="p-2">Hi {{ user.get_username }} </p>
+    <h2 style="text-align: center;">Hi {{ user.get_username }} </h2>
+    <a class="btn btn-primary btn-lg btn-block" href="{% url 'map' %}" role="button">Cat Tracker Map</a>
     <a class="btn btn-warning btn-lg btn-block" href="{% url 'logout' %}" role="button">Logout</a>
     {% else %}
     <a class="btn btn-primary btn-lg btn-block" href="{% url 'login' %}" role="button">Login</a>

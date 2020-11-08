@@ -11,8 +11,8 @@ def index(request):
     return render(request, 'index.html')
 
 @login_required
-def home(request):
-    return render(request, 'home.html')
+def map(request):
+    return render(request, 'map.html')
 
 def signup(request):
     form = UserCreationForm(request.POST)
