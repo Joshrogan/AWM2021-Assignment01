@@ -32,8 +32,6 @@ def update_location(request):
         if not user_profile:
             raise ValueError("Can't get User details")
 
-        logger.error(user_profile)
-
         point = request.POST["point"].split(",")
         point = [float(part) for part in point]
         point = Point(point, srid=4326)
