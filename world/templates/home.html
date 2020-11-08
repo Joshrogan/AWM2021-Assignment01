@@ -13,29 +13,32 @@
             let currentPosition = navigator.geolocation.getCurrentPosition((position) => {
             console.log(position.coords.latitude)
             console.log(position.coords.longitude);
-            map.setView([position.coords.latitude, position.coords.longitude], 13)
+            map.setView([position.coords.latitude, position.coords.longitude], 11)
 
-            let marker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
+            let customIcon = L.icon({
+                iconUrl: 'https://placekitten.com/g/75/75',
 
+                iconSize:     [75, 75], // size of the icon
+
+            });
+
+            let marker = L.marker([position.coords.latitude, position.coords.longitude], {icon: customIcon}).addTo(map);
+            L.circle([position.coords.latitude, position.coords.longitude], 5000).addTo(map);
             let stringA = position.coords.longitude + "," + position.coords.latitude;
-            console.log(stringA, "stringA")
             update_db(stringA)
         })           
     }
 
 
     function updateLocation(position) {
-        console.log('IN HERE')
         console.log(position)
         update_db(position)
     }
 
     function update_db(position) {
-        // var locString = position.coords.longitude + ", " + position.coords.latitude;
         $.ajax({
             type: "POST",
             headers: {
-                // 'X-CSRFToken': getCookie('csrftoken')
             },
             url: "/updatedb/",
             data: {
@@ -45,16 +48,10 @@
         }).done(function (data, status, xhr) {
             console.log(data["message"])
             console.log("success")
-            // var originalMsg = $(".toast-body").html();
-            // $(".toast-body").html(originalMsg + "<br/> Updated database <br/>"
-            // + data["message"]);
         }).fail(function (xhr,staus, error) {
             console.log(error);
-            // var originalMsg = $(".toast-body").html();
-            // $(".toast-body").html(originalMsg + "<br/>" + error);
         }).always(function () {
             console.log("find_loc_ed finished");
-            // $(".toast").toast('show');
         });
     }
 </script>
