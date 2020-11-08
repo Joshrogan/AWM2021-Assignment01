@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% load leaflet_tags %}
+
+  <h1 class="header">Your current location</h1>
+  <div class="container">
+    {% leaflet_map "yourmap" callback="window.map_init_basic" %}
+  </div>
+{% endblock %}
