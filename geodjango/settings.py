@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.gis',
     'world',
     'crispy_forms',
-    'leaflet'
+    'leaflet',
+    'geodjango'
 ]
 
 MIDDLEWARE = [
