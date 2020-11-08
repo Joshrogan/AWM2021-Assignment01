@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-import sys, os
+import sys, os, socket
 from pathlib import Path
 from .python_config import *
 
@@ -26,7 +26,7 @@ SECRET_KEY = KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
 
 
 # Application definition
@@ -90,6 +90,13 @@ DATABASES = {
     'PORT': 25432,
     }
 }
+
+if socket.gethostname() == "josh-tuxedo":
+    DATABASES["default"]["HOST"] = "localhost"
+    DATABASES["default"]["PORT"] = 25432
+else:
+    DATABASES["default"]["HOST"] = "my_first_spatialdb"
+    DATABASES["default"]["PORT"] = 5432
 
 
 # Password validation
