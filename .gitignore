@@ -156,3 +156,8 @@ static/
 
 ## config file
 python_config.py
+
+__pycache__/*
+__pycache__/
+__pycache__
+*.pyc
