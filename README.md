@@ -11,8 +11,7 @@ it shows your location, draws a 5km radius around it and marks your precise loca
 * Mapping tech: Leaflet JS with OpenStreetMap
 * Deployment architecture sketch by Lecturer:
 ![deploy architecture](docker_net.png)
-* Hosting: Digital Ocean
-
+* Deployment: Docker, Nginx, Digital Ocean
 
 
 
